@@ -45,12 +45,6 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
-    - name: Set up JDK
-      uses: actions/setup-java@v2
-      with:
-        distribution: 'adopt'
-        java-version: '11'
-
     - name: Deploy to Production
       run: mvn deploy
 
@@ -60,13 +54,6 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
-
-    - name: Set up JDK
-      uses: actions/setup-java@v2
-      with:
-        distribution: 'adopt'
-        java-version: '11'
-
     - name: Analyze Code
       run: mvn dependency:analyze
 
