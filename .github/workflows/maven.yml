@@ -89,21 +89,7 @@ jobs:
     - name: package
       run: mvn package
 
-  install:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-
-    - name: Set up JDK
-      uses: actions/setup-java@v2
-      with:
-        distribution: 'adopt'
-        java-version: '11'
-
-    - name: install
-      run: mvn install
+ 
   
   deploy:
     runs-on: ubuntu-latest
