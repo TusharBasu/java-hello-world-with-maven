@@ -11,8 +11,8 @@
 <distributionManagement>
    <repository>
      <id>github</id>
-     <name>GitHub OWNER Apache Maven Packages</name>
-     <url>https://maven.pkg.github.com/TusharBasu/java-hello-world-with-maven</url>
+     <name>GitHub TusharBasu Apache Maven Packages</name>
+     <url>https://maven.pkg.github.com/TusharBasu/worksheet1.2</url>
    </repository>
 </distributionManagement>
     
