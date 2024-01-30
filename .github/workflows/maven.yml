@@ -86,25 +86,7 @@ jobs:
     - name: Generate Docs
       run: mvn site
 
-  build-docker-image:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
 
-    - name: Build Docker Image
-      run: echo "Building Docker image..."
-
-  publish-docker-image:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-
-    - name: Publish Docker Image
-      run: echo "Publishing Docker image..."
 
   release:
     runs-on: ubuntu-latest
