@@ -1,4 +1,4 @@
-name: Maven Build and Goals
+name: Hello World Maven Build
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
@@ -19,15 +19,119 @@ jobs:
         distribution: 'adopt'
         java-version: '11'
 
-    - name: Build with Maven and Display Output
-      run: |
-        mvn clean install -B
-        mvn validate
-        mvn compile
-        mvn test
-        mvn package
-        mvn install
-        mvn deploy
-        mvn site
-        mvn clean
-        mvn verify
+    - name: Build with Maven
+      run: mvn clean install
+
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '11'
+
+    - name: Run Tests
+      run: mvn test
+
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '11'
+
+    - name: Deploy to Production
+      run: mvn deploy
+
+  analyze-code:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '11'
+
+    - name: Analyze Code
+      run: mvn dependency:analyze
+
+  generate-docs:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '11'
+
+    - name: Generate Docs
+      run: mvn site
+
+  build-docker-image:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Build Docker Image
+      run: echo "Building Docker image..."
+
+  publish-docker-image:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Publish Docker Image
+      run: echo "Publishing Docker image..."
+
+  release:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Release
+      run: mvn release
+
+  clean:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: clean
+      run: mvn clean
+
+  verify:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: verify
+      run: mvn verify
